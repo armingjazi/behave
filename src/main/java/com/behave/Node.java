@@ -1,7 +1,6 @@
 package com.behave;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -23,16 +22,16 @@ class Node implements ISelectable
         selectFunctionList_.add(selectFunctionFactory_.create(selectable, selectPredicate));
     }
 
-    void tick() throws Exception
+    void tick(ISignal signal)
     {
         for (ISelectFunction selectFunction: selectFunctionList_)
-            if (selectFunction.call())
+            if (selectFunction.apply(signal))
                 return;
     }
 
     @Override
-    public void ticked() throws Exception
+    public void ticked(ISignal signal)
     {
-        tick();
+        tick(signal);
     }
 }

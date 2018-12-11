@@ -1,7 +1,7 @@
 package com.behave;
 
-import java.util.concurrent.Callable;
+import java.util.function.Function;
 
-interface ISelectFunction extends Callable<Boolean>
+interface ISelectFunction extends Function<ISignal, Boolean>
 {
 }
